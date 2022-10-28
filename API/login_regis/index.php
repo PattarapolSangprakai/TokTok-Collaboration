@@ -21,6 +21,5 @@
 <body>
     <h1>welcome <?php echo $row["name"]; ?></h1>
     <a href="logout.php">Logout</a>
-    <h2>Hello</h2>
 </body>
 </html>
