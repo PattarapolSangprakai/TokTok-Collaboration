@@ -53,35 +53,31 @@
         </ul>
       </div>
     <section class="content">
-        <div id="log-text-hold">
-            <p>M Y - T O K T O K</p>
+        <div id="log-text-hold" style="height: 10vh;">
+            <p style="margin: 20px auto 0;">M Y - T O K T O K - SIGN UP</p>
         </div>
         <div class="log-content">
-            <div class="log-sub">
-                <div class="log-sub-inner">
-                    <p>I HAVE AN ACCOUNT</p>
+            <div class="reg-sub">
+                <div class="reg-sub-inner">
                     <form id="login" class="log-input-group">
+                        <label for="">First Name</label>
+                        <input type="text" class="input-field" placeholder="First Name" required>
+                        <label for="">Last Name</label>
+                        <input type="text" id="pwf" class="input-field" placeholder="Last Name" required>
                         <label for="">User ID</label>
-                        <input type="text" class="input-field" placeholder="User Id" required>
+                        <input type="text" id="pwf" class="input-field" placeholder="User ID" required>
+                        <label for="">Email</label>
+                        <input type="text" id="pwf" class="input-field" placeholder="Email" required>
                         <label for="">Password</label>
-                        <input type="password" id="pwf" class="input-field" placeholder="Enter Password " required>
-                        <label for="" id="log-error">Wrong User ID or Password!</label>
-                        <a href="">Forgot Your Password?</a>
-                        <div class="log-check"> <input type="checkbox" id="pw-check" class="check-box" onclick="password()"><span>Show Password</span></div>
-                        <div class="log-check"><input type="checkbox" class="check-box" onclick="showErr()"><span>Remember Me</span> </div>
-                        <button type="submit">Log in</button>
+                        <input type="password" id="pwf" class="input-field" placeholder="Password" required>
+                        <label for="">Confirmed Password</label>
+                        <input type="password" id="pwf" class="input-field" placeholder="Confirmed Password" required>
+                
+                        <button type="submit">Sign UP</button>
                     </form>
                 </div>
             </div>
-            <div style="width: 1px; background-color: black; height: 80%"></div>
-            <div class="log-sub">
-                <div class="log-sub-inner">
-                    <p>I DON'T HAVE AN ACCOUNT</p>
-                    <p style="font-size: 20px; padding-top: 30px;">Create an account to purcase products on our website and benefits from our exclusive contents.</p>
-                    <a href="signup.html"><button type="submit" id="log-sin-btn">SIGN UP</button></a>
-                </div>
                 
-            </div>
         </div>
         
         

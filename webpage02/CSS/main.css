@@ -171,21 +171,22 @@
     height: calc(80vh - 130px);
 }
 
-#log-left {
+.log-sub{
 
     width: 50%;
     display: flex;
     justify-content: center;
+
 }
 
-#log-left-container {
+.log-sub-inner {
     height: 300px;
     padding: 0 20px;
     font-weight: 300;
     width: 70%;
 }
 
-#log-left-container p {
+.log-sub-inner p {
     font-size: 25px;
     margin: 10px auto;
 }
@@ -249,9 +250,41 @@
     visibility: hidden;
 }
 
+#log-sin-btn {
+    box-sizing: border-box;
+    padding: 10px 0;
+    margin-top: 10px;
+    width: 100%;
+    font-size: 20px;
+    background-color: white;
+    border: 0.2px solid grey;
+    cursor: pointer;
+    transition: 0.5s;
+    margin-top: 40px;
+}
+
+#log-sin-btn:hover {
+    background-color: red;
+    color: white;
+    border: 0;
+}
+
+#log-sin-btn:active {
+    transform:translateY(4px);
+}
 
 
+.reg-sub {
 
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.reg-sub-inner {
+
+    width:70vh;
+}
 
 
 
