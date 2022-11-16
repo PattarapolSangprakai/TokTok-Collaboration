@@ -1,37 +1,36 @@
 <?php 
-
     require_once("./php/config.php");
+    
     if(!empty($_SESSION["id_ses"])){
         header("Location: profile.php");
     }
-    else{
-    
-    if(isset($_POST["login"])){
-        $usernameemail = $_POST["usernameemail"];
-        $password = $_POST["password"];
-        $result = mysqli_query($conn, "SELECT * FROM site_user WHERE User_Name = '$usernameemail' OR Email = '$usernameemail'");
-        $row = mysqli_fetch_assoc($result);
-        /*
-        if(isset($row["password"])){
-            $verify = password_verify($password, $row["password"]);
-        }
-        else{
-            $verify = false;
-        }
-        */
-
-        if(mysqli_num_rows($result) > 0 ){
-           if($password == $row["Password"]){
-               $_SESSION["login_ses"] = true;
-               $_SESSION["id_ses"] = $row["User_ID"];
-               header("Location: index.php"); 
-           }
-           else{
-            echo
-            "<script>alert('user not registered');</script>";
+    else
+    {
+        if(isset($_POST["login"])){
+            $usernameemail = $_POST["usernameemail"];
+            $password = $_POST["password"];
+            $result = mysqli_query($conn, "SELECT * FROM site_user WHERE User_Name = '$usernameemail' OR Email = '$usernameemail'");
+            $row = mysqli_fetch_assoc($result);
+            /*
+            if(isset($row["password"])){
+                $verify = password_verify($password, $row["password"]);
             }
+            else{
+                $verify = false;
+            }
+            */
+            if($password == $row["Password"]){
+                $_SESSION["login_ses"] = true;
+                $_SESSION["id_ses"] = $row["User_ID"];
+                unset ($_SESSION["log_chk"]);
+                header("Location:index.php"); 
+            }
+            else{  
+                 $_SESSION["log_chk"] = true;
+                 header("Location:login.php");
+             }
+            
         }
-    }
     }
 
 ?>
@@ -66,7 +65,14 @@
                         <input type="text" name="usernameemail" class="input-field" placeholder="User Id" required>
                         <label for="">Password</label>
                         <input type="password" name="password" id="pwf" class="input-field" placeholder="Enter Password " required>
-                        <label for="" id="log-error">Wrong User ID or Password!</label>
+                        <?php 
+                            if(isset($_SESSION["log_chk"])){
+                                echo "<label type='text' syle='text-decoration:red;'>รหัสผิดโวยยยยย</label>";
+                            }
+                            else{
+                                echo "<label type='text' syle='text-decoration:red;'>Nothing Happend</label>";
+                            }
+                        ?>
                         <a href="">Forgot Your Password?</a>
                         <div class="log-check"> <input type="checkbox" id="pw-check" class="check-box" onclick="password()"><span>Show Password</span></div>
                         <div class="log-check"><input type="checkbox" class="check-box" onclick="showErr()"><span>Remember Me</span> </div>

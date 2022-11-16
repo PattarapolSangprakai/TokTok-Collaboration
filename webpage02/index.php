@@ -1,6 +1,6 @@
 <?php
     require_once('./php/config.php');
-    unset($_SESSION["shopping_cart"]);
+    //unset($_SESSION["shopping_cart"]);
 ?>
 <!DOCTYPE html>
 <html>

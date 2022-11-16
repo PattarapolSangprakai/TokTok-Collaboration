@@ -1,9 +1,11 @@
 <?php
    require_once("./php/config.php");
+   
+   
    if(isset($_POST["add_to_cart"])){
         if(!empty($_SESSION["id_ses"])){
             if(isset($_SESSION["shopping_cart"]))
-            {
+            {   
                 $item_array_id = array_column($_SESSION["shopping_cart"], "item_id");
                 if(!in_array($_GET["id"], $item_array_id))
                 {
@@ -17,10 +19,33 @@
                         'item_img' => $_POST["hidden_img"]
                     );
                     $_SESSION["shopping_cart"][$count] = $item_array;
+                    $_SESSION["item_count"] += $_POST["quantity"];
                 }
                 else
                 {
-                    echo '<script>alert("Item Alrady Added!!")</script>';
+                    $i = 0;
+                    $quan = 0;
+                    foreach($_SESSION["shopping_cart"] as $keys => $values)
+                    {
+                        if($values['item_id'] == $_GET["id"]){
+                            $quan = $_POST["quantity"] + $values['item_quantity'];
+                            break;   
+                        }else{
+                            $i += 1;
+                        }
+                        echo $i;
+                        $item_array = array(
+                            'item_id' => $_GET["id"],
+                            'item_name' => $_POST["hidden_name"],
+                            'item_price' => $_POST["hidden_price"],
+                            'item_color' => $_POST["hidden_color"],
+                            'item_quantity' => $quan,
+                            'item_img' => $_POST["hidden_img"]
+                        );
+                        $_SESSION["shopping_cart"][$i] = $item_array;   
+                    }
+                    $_SESSION["item_count"] += $_POST["quantity"];
+                    //echo '<script>alert("Item Alrady Added!!")</script>';
                     echo '<script>window.location="product.php"</script>';
                 }
                 
@@ -36,6 +61,7 @@
                     'item_img' => $_POST["hidden_img"]
                 );
                 $_SESSION["shopping_cart"][0] = $item_array;
+                $_SESSION["item_count"] += $_POST["quantity"];
             }
             
         }
@@ -43,6 +69,7 @@
             header("Location: profile.php");
         }
    }
+   
 ?>
 
 <!DOCTYPE html>
