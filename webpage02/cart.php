@@ -11,12 +11,16 @@
                 if($values["item_id"] == $_GET["id"])
                 {
                     unset($_SESSION["shopping_cart"][$keys]);
+                    $_SESSION["item_count"] -= $values["item_quantity"];
                     echo '<script>alert("Item Removed")</script>';
                     echo '<script>window.location="cart.php"</script>';
                 }
             }    
         } 
     }
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,12 +79,12 @@
            </p>
             <p>
                 <span>Number of Items</span>
-                <span><?php echo $quantity; ?></span>
+                <span><?php echo $_SESSION["item_count"]; ?></span>
            </p>
            <p>
 
            </p>
-           <a href="">Proceed to checkout</a>
+           <a href="checkout.php?total=<?php echo $total;?>">Proceed to checkout</a>
         </div>
     </div>
    </div> 

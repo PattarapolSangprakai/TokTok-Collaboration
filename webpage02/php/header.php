@@ -1,10 +1,16 @@
 <?php
     require_once('./php/config.php');
     if(isset($_SESSION["shopping_cart"])){
-        $count = count($_SESSION["shopping_cart"]);
+        //$count = count($_SESSION["shopping_cart"]);
     }
     else{
-        $count = 0;
+        //$count = 0;
+    }
+
+    if(isset($_SESSION["item_count"])){
+
+    }else{
+        $_SESSION["item_count"] = 0;
     }
 ?>
 <section class="nav-main">
@@ -20,7 +26,7 @@
             </div>
             <div class="nav-div" id="nav-right">
                 <div id="menu-holder-right">
-                    <a href="cart.php"><?php echo $count;?><i class="fa-solid fa-cart-shopping"></i></a>
+                    <a href="cart.php"><?php echo  $_SESSION["item_count"];?><i class="fa-solid fa-cart-shopping"></i></a>
                     <a href="login.php"><i class="fa-regular fa-user" id="nav-user"></i></a>
                 </div>
             </div>
